@@ -1,6 +1,6 @@
 # WebCalculator
 
-This is a simple web calculator implemented with Html and CSS.
+This is a simple web calculator implemented using HTML and CSS.
 
 ## Screenshot
 
