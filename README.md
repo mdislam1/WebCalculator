@@ -18,10 +18,10 @@ This is a simple yet functional calculator web application built using HTML, CSS
 ## Screenshots
 
 ### Light Mode
-![Light Mode Screenshot](screenshots/light-mode.png)
+![Light Mode Screenshot](Screenshots/Screenshot_Light_Mode.png)
 
 ### Dark Mode
-![Dark Mode Screenshot](screenshots/dark-mode.png)
+![Dark Mode Screenshot](Screenshots/Screenshot_Dark_Mode.png)
 
 ---
 
