@@ -103,9 +103,8 @@ This project is open-source and available under the MIT License. See the `LICENS
 ---
 
 ## Author
-
-**Md Islam**  
-- GitHub: https://github.com/mdislam1  
+Md Islam  
+GitHub: https://github.com/mdislam1
 
 ---
 
