@@ -1,46 +1,105 @@
 <!DOCTYPE HTML>
-<html lang ="en">
+<html lang="en">
 <head>
-<title>Calculator</title>
-<meta charset="utf-8">
-<link rel="stylesheet" href="cal.css" media="screen">
-<!--[if lt IE 9]>
-<script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
-</script>
-<![endif]-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        let memory = 0;
+        
+        function clearDisplay() {
+            document.getElementById("display").value = "";
+        }
+        
+        function deleteLast() {
+            let display = document.getElementById("display");
+            display.value = display.value.slice(0, -1);
+        }
+        
+        function appendValue(value) {
+            document.getElementById("display").value += value;
+        }
+        
+        function calculate() {
+            try {
+                let display = document.getElementById("display");
+                display.value = eval(display.value);
+            } catch (e) {
+                alert("Invalid Expression");
+            }
+        }
+        
+        function percentage() {
+            let display = document.getElementById("display");
+            display.value = parseFloat(display.value) / 100;
+        }
+        
+        function memoryStore() {
+            memory = parseFloat(document.getElementById("display").value) || 0;
+        }
+        
+        function memoryRecall() {
+            document.getElementById("display").value += memory;
+        }
+        
+        function memoryClear() {
+            memory = 0;
+        }
+        
+        function toggleTheme() {
+            document.body.classList.toggle("dark-mode");
+        }
+        
+        document.addEventListener("keydown", function(event) {
+            const key = event.key;
+            if (!isNaN(key) || ["+", "-", "*", "/", "."].includes(key)) {
+                appendValue(key);
+            } else if (key === "Enter") {
+                calculate();
+            } else if (key === "Backspace") {
+                deleteLast();
+            } else if (key === "Escape") {
+                clearDisplay();
+            }
+        });
+    </script>
 </head>
 <body>
-	<center>
-		<h1>Calculator</h1>
-	<div class="main">
-		<form name="cal">
-			<input type="text" placeholder="0" name="display">
-			<br>
-			<input type="button" class="button" value="AC" onclick="cal.display.value=''" id="clear">
-			<input type="button" class="button" value="&larr;" onclick="cal.display.value=cal.display.value.slice(0, -1)"> 
-			<input type="button" class="button" value="&divide" onclick="cal.display.value+='/'" id="color">
-			<br>
-			<input type="button" class="button" value="7" onclick="cal.display.value+='9'">
-			<input type="button" class="button" value="8" onclick="cal.display.value+='8'">
-			<input type="button" class="button" value="9" onclick="cal.display.value+='9'">
-			<input type="button" class="button" value="&times" onclick="cal.display.value+='*'" id="color">
-			<br>
-			<input type="button" class="button" value="4" onclick="cal.display.value+='4'">
-			<input type="button" class="button" value="5" onclick="cal.display.value+='5'">
-			<input type="button" class="button" value="6" onclick="cal.display.value+='6'">
-			<input type="button" class="button" value="-" onclick="cal.display.value+='-'" id="color">
-			<br>
-			<input type="button" class="button" value="1" onclick="cal.display.value+='1'">
-			<input type="button" class="button" value="2" onclick="cal.display.value+='2'">
-			<input type="button" class="button" value="3" onclick="cal.display.value+='3'">
-			<input type="button" class="button" value="+" onclick="cal.display.value+='+'" id="color">
-			<br>
-			<input type="button" class="button" value="0" onclick="cal.display.value+='0'" id="zero">
-			<input type="button" class="button" value="." onclick="cal.display.value+='.'">
-			<input type="button" class="button" value="=" onclick="cal.display.value =eval(cal.display.value)" id="color">
-			<br>			
-		</form>
-	</div>
-	</center>
+    <div class="container">
+        <h1>Calculator</h1>
+        <button class="toggle-theme" onclick="toggleTheme()">Dark Mode</button>
+        <div class="calculator">
+            <input type="text" id="display" placeholder="0" readonly>
+            <div class="buttons">
+                <button class="operator" onclick="clearDisplay()">AC</button>
+                <button class="operator" onclick="deleteLast()">&larr;</button>
+                <button class="operator" onclick="appendValue('/')">÷</button>
+                <button class="operator" onclick="memoryStore()">M+</button>
+
+                <button onclick="appendValue('7')">7</button>
+                <button onclick="appendValue('8')">8</button>
+                <button onclick="appendValue('9')">9</button>
+                <button class="operator" onclick="appendValue('*')">×</button>
+                <button class="operator" onclick="memoryRecall()">MR</button>
+
+                <button onclick="appendValue('4')">4</button>
+                <button onclick="appendValue('5')">5</button>
+                <button onclick="appendValue('6')">6</button>
+                <button class="operator" onclick="appendValue('-')">-</button>
+                <button class="operator" onclick="memoryClear()">MC</button>
+
+                <button onclick="appendValue('1')">1</button>
+                <button onclick="appendValue('2')">2</button>
+                <button onclick="appendValue('3')">3</button>
+                <button class="operator" onclick="appendValue('+')">+</button>
+
+                <button class="zero" onclick="appendValue('0')">0</button>
+                <button onclick="appendValue('.')">.</button>
+                <button class="operator" onclick="percentage()">%</button>
+                <button class="equal" onclick="calculate()">=</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
