@@ -152,3 +152,56 @@ button:hover {
     background: #f8f9fa;
     color: #343a40;
 }
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .calculator {
+        padding: 10px;
+    }
+
+    #display {
+        font-size: 1.5em;
+    }
+
+    button {
+        font-size: 1.2em;
+        height: 50px;
+    }
+
+    .toggle-theme {
+        font-size: 1em;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .calculator {
+        padding: 5px;
+    }
+
+    #display {
+        font-size: 1.3em;
+    }
+
+    button {
+        font-size: 1em;
+        height: 45px;
+    }
+
+    .toggle-theme {
+        font-size: 0.9em;
+        padding: 6px;
+    }
+}
+
